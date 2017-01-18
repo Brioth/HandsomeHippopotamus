@@ -8,15 +8,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <uses-permission android:name="android.permission.INTERNET" />
         <activity android:name="com.pxlopdracht.security.activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
-        <activity android:name="com.pxlopdracht.security.activities.SenderActivity" />
-        <activity android:name="com.pxlopdracht.security.activities.RecieverActivity"></activity>
+        <activity android:name="com.pxlopdracht.security.activities.SenderActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+        <activity android:name="com.pxlopdracht.security.activities.RecieverActivity" />
+        <activity android:name="com.pxlopdracht.security.activities.AttachmentActivity"/>
     </application>
 
 </manifest>
