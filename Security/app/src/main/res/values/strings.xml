@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">Security</string>
-    <string name="messageInputBox">Enter a normal message</string>
-    <string name="sendUnencryptedButton">Send</string>
-    <string name="sendEncryptedButton">Add a secret</string>
-    <string name="receipientInputBox">Sent to</string>
 </resources>

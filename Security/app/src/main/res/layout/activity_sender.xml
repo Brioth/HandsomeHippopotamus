@@ -1,34 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sender"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.pxlopdracht.security.activities.SenderActivity">
-    <EditText android:id="@+id/receipientInputBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/receipientInputBox"/>
-    <EditText android:id="@+id/messageInputBox"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/messageInputBox"/>
-    <Button
-        android:id="@+id/sendUnencryptedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sendUnencryptedButton"
-        android:onClick="sendUnencrypted"/>
-    <Button
-        android:id="@+id/sendEncryptedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sendEncryptedButton"
-        android:onClick="sendEncrypted"/>
-</LinearLayout>
+
+</RelativeLayout>
