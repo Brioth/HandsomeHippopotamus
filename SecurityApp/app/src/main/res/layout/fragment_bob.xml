@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pxl.opdrachten.securityapp.activities.BobFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:text="Read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BobRead"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="60dp"
+        android:onClick="BobRead"/>
+
+    <Button
+        android:text="Send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BobSend"
+        android:layout_alignBaseline="@+id/BobRead"
+        android:layout_alignBottom="@+id/BobRead"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="72dp"
+        android:onClick="BobSend"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="here is some text"
+        android:ems="10"
+        android:layout_marginTop="97dp"
+        android:id="@+id/BobTextbox"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

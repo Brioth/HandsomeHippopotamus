@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-
 import com.pxlopdracht.security.security.R;
+import com.pxlopdracht.security.services.FileManagementService;
 //source = http://stackoverflow.com/questions/2020088/sending-email-in-android-using-javamail-api-without-using-the-default-built-in-a
 
 public class SenderActivity extends Activity {
@@ -18,18 +18,39 @@ public class SenderActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender);
+
+        FileManagementService fileManagementService = new FileManagementService();
+
+        fileManagementService.ReadFile(this, "PublicKeysFile.txt");
     }
 
     public void sendUnencrypted(View view){
         try{
-            GMailSender sender = new GMailSender("username@gmail.com","password");
+            String senderMail = "ccelen00@gmail.com";
+            GMailSender sender = new GMailSender(senderMail,"Tafellaken0123");
+
+            EditText receiverBox = (EditText) findViewById(R.id.receipientInputBox);
+            String receiverMail = getEmail(receiverBox);
+
+            EditText messageBox = (EditText) findViewById(R.id.messageInputBox);
+            String message = messageBox.getText().toString();
+
             sender.sendMail("SuperSecretMessage",
-                    "This is Body",
-                    "sender@gmail.com",
-                    "user@yahoo.com");
+                    message,
+                    senderMail,
+                    receiverMail);
         } catch (Exception e){
             Log.e("SendMail", e.getMessage(), e);
         }
+    }
+
+    private String getEmail(EditText inputField) {
+        String uncheckedMail = inputField.getText().toString();
+        if (uncheckedMail.contains("@") && uncheckedMail.contains("."))
+            return uncheckedMail;
+        else
+            return "Please Enter a correct email-address";
+
     }
 
     public void sendEncrypted(View view){

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pxl.opdrachten.securityapp">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".services.RSA.GenerateRSAKeys"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.AES.GenerateAESKey"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.RSA.RSAEncryption"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.RSA.RSADecryption"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.AES.AESEncryption"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.AES.AESDecryption"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.FileHandler"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.GenerateHash"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activities.FingerprintActivity"></activity>
+    </application>
+
+</manifest>

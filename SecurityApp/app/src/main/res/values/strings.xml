@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SecurityApp</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="readButton">Read</string>
+    <string name="sendButton">Send</string>
+    <string name="public_A">Public_A</string>
+    <string name="public_B">Public_B</string>
+    <string name="private_A">Private_A</string>
+    <string name="private_B">Private_B</string>
+    <string name="encryptedText_A">File1_A</string>
+    <string name="encryptedText_B">File1_B</string>
+    <string name="encryptedAESKey_A">File2_A</string>
+    <string name="encryptedAESKey_B">File2_B</string>
+    <string name="hash_A">File3_A</string>
+    <string name="hash_B">File3_B</string>
+
+    <string name="title_fingerprint">One-touch Sign In</string>
+    <string name="desc_fingerprint">Please place your fingertip on the scanner to verify your identity</string>
+    <string name="activity_home_desc">You have succesfully logged in with fingerprint authentication</string>
+
+
+</resources>

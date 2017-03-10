@@ -2,28 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pxlopdracht.security.security">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
+        android:description="@string/app_description"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <uses-permission android:name="android.permission.INTERNET" />
-        <activity android:name="com.pxlopdracht.security.activities.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+        <activity android:name="com.pxlopdracht.security.activities.MainActivity" />
         <activity android:name="com.pxlopdracht.security.activities.SenderActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.pxlopdracht.security.activities.RecieverActivity" />
-        <activity android:name="com.pxlopdracht.security.activities.AttachmentActivity"/>
+        <activity android:name="com.pxlopdracht.security.activities.AttachmentActivity" />
+        <activity android:name="com.pxlopdracht.security.activities.DecryptActivity" />
+        <activity android:name="com.pxlopdracht.security.activities.LoginActivity"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="app_name">Security</string>
+    <string name="app_name">Bond\'s Secret Messaging App</string>
+    <string name="app_description">This is a project for Security Research</string>
     <string name="messageInputBox">Enter a normal message</string>
     <string name="sendUnencryptedButton">Send</string>
     <string name="sendEncryptedButton">Add a secret</string>
     <string name="receipientInputBox">Sent to</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
+
+
+
+
