@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_number"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.pxl.opdrachten.securityapp.activities.NumberActivity">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb4"
+        android:layout_alignBaseline="@+id/cb3"
+        android:layout_alignBottom="@+id/cb3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="61dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb3"
+        android:layout_alignBaseline="@+id/cb2"
+        android:layout_alignBottom="@+id/cb2"
+        android:layout_toStartOf="@+id/cb4"
+        android:layout_marginEnd="41dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb2"
+        android:layout_alignBaseline="@+id/cb1"
+        android:layout_alignBottom="@+id/cb1"
+        android:layout_toStartOf="@+id/cb3"
+        android:layout_marginEnd="18dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="119dp"
+        android:id="@+id/cb1"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/cb2"
+        android:layout_marginEnd="25dp" />
+
+    <Button
+        android:text="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Nbutton2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:id="@+id/Nbutton3"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:id="@+id/Nbutton1"
+        android:layout_below="@+id/cb1"
+        android:layout_alignEnd="@+id/cb1"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Nbutton4"
+        android:layout_alignStart="@+id/cb2"
+        android:id="@+id/Nbutton5"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Nbutton7"
+        android:layout_alignEnd="@+id/Nbutton5"
+        android:id="@+id/Nbutton8"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Nbutton8"
+        android:layout_alignStart="@+id/Nbutton6"
+        android:id="@+id/Nbutton9"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Nbutton6"
+        android:layout_alignBaseline="@+id/Nbutton5"
+        android:layout_alignBottom="@+id/Nbutton5"
+        android:layout_alignStart="@+id/Nbutton3"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/Nbutton7"
+        android:layout_below="@+id/Nbutton4"
+        android:layout_alignStart="@+id/Nbutton4"
+        android:onClick="AddToSequence"/>
+
+    <Button
+        android:text="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Nbutton2"
+        android:layout_alignBaseline="@+id/Nbutton1"
+        android:layout_alignBottom="@+id/Nbutton1"
+        android:layout_alignEnd="@+id/cb3"
+        android:onClick="AddToSequence"/>
+
+
+    <Button
+        android:text="4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:id="@+id/Nbutton4"
+        android:layout_below="@+id/Nbutton1"
+        android:layout_alignStart="@+id/Nbutton1"
+        android:onClick="AddToSequence"/>
+</RelativeLayout>

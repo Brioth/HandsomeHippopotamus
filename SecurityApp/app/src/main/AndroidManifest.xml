@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -57,7 +57,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".activities.FingerprintActivity"></activity>
+        <activity android:name=".activities.FingerprintActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.PasswordAcitvity" />
+        <activity android:name=".activities.InitActivity" />
+        <activity android:name=".activities.NumberActivity"/>
+        <activity android:name=".activities.MainActivity"/>
     </application>
 
 </manifest>

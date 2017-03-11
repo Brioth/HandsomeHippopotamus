@@ -18,11 +18,4 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
-    public boolean GenerateRSAKeys(){
-        try{
-            RSAKeys keypair = new RSAKeys();
-
-        }
-    }
 }
