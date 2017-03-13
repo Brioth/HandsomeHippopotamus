@@ -3,6 +3,7 @@ package com.pxl.opdrachten.securityapp.activities;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
@@ -12,7 +13,8 @@ import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.pxl.opdrachten.securityapp.R;
 import com.pxl.opdrachten.securityapp.services.FingerprintHandler;
@@ -32,69 +34,75 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-@TargetApi(23)
 public class FingerprintActivity extends AppCompatActivity {
 
 
+    private FingerprintManager fingerprintManager;
+    private KeyguardManager keyguardManager;
     private KeyStore keyStore;
-    // Variable used for storing the key in the Android Keystore container
-    private static final String KEY_NAME = "androidHive";
+    private KeyGenerator keyGenerator;
+    private static final String KEY_NAME = "example_key";
     private Cipher cipher;
-    private TextView textView;
+    private FingerprintManager.CryptoObject cryptoObject;
 
-
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingerprint);
 
-
-        // Initializing both Android Keyguard Manager and Fingerprint Manager
-        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
-
-
-        textView = (TextView) findViewById(R.id.errorText);
+        keyguardManager =
+                (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+        fingerprintManager =
+                (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
 
-        // Check whether the device has a Fingerprint sensor.
-        if(!fingerprintManager.isHardwareDetected()){
-            /**
-             * An error message will be displayed if the device does not contain the fingerprint hardware.
-             * However if you plan to implement a default authentication method,
-             * you can redirect the user to a default authentication activity from here.
-             * Example:
-             * Intent intent = new Intent(this, DefaultAuthenticationActivity.class);
-             * startActivity(intent);
-             */
-            textView.setText("Your Device does not have a Fingerprint Sensor");
-        }else {
-            // Checks whether fingerprint permission is set on manifest
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-                textView.setText("Fingerprint authentication permission not enabled");
-            }else{
-                // Check whether at least one fingerprint is registered
-                if (!fingerprintManager.hasEnrolledFingerprints()) {
-                    textView.setText("Register at least one fingerprint in Settings");
-                }else{
-                    // Checks whether lock screen security is enabled or not
-                    if (!keyguardManager.isKeyguardSecure()) {
-                        textView.setText("Lock screen security not enabled in Settings");
-                    }else{
-                        generateKey();
+        if (!keyguardManager.isKeyguardSecure()) {
 
-
-                        if (cipherInit()) {
-                            FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                            FingerprintHandler helper = new FingerprintHandler(this);
-                            helper.startAuth(fingerprintManager, cryptoObject);
-                        }
-                    }
-                }
-            }
+            Toast.makeText(this,
+                    "Lock screen security not enabled in Settings",
+                    Toast.LENGTH_LONG).show();
+            return;
         }
-    }
 
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.USE_FINGERPRINT) !=
+                PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this,
+                    "Fingerprint authentication permission not enabled",
+                    Toast.LENGTH_LONG).show();
+
+            return;
+        }
+
+        if (!fingerprintManager.hasEnrolledFingerprints()) {
+
+            // This happens when no fingerprints are registered.
+            Toast.makeText(this,
+                    "Register at least one fingerprint in Settings",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+//        if (!fingerprintManager.hasEnrolledFingerprints()) {
+//
+//            // This happens when no fingerprints are registered.
+//            Toast.makeText(this,
+//                    "Register at least one fingerprint in Settings",
+//                    Toast.LENGTH_LONG).show();
+//            return;
+//        }
+
+        generateKey();
+
+        if (cipherInit()) {
+            cryptoObject =
+                    new FingerprintManager.CryptoObject(cipher);
+            FingerprintHandler helper = new FingerprintHandler(this);
+            helper.startAuth(fingerprintManager, cryptoObject);
+        }
+
+    }
 
     @TargetApi(Build.VERSION_CODES.M)
     protected void generateKey() {
@@ -104,14 +112,15 @@ public class FingerprintActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-        KeyGenerator keyGenerator;
         try {
-            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
-        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
-            throw new RuntimeException("Failed to get KeyGenerator instance", e);
+            keyGenerator = KeyGenerator.getInstance(
+                    KeyProperties.KEY_ALGORITHM_AES,
+                    "AndroidKeyStore");
+        } catch (NoSuchAlgorithmException |
+                NoSuchProviderException e) {
+            throw new RuntimeException(
+                    "Failed to get KeyGenerator instance", e);
         }
-
 
         try {
             keyStore.load(null);
@@ -132,15 +141,17 @@ public class FingerprintActivity extends AppCompatActivity {
         }
     }
 
-
     @TargetApi(Build.VERSION_CODES.M)
     public boolean cipherInit() {
         try {
-            cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+            cipher = Cipher.getInstance(
+                    KeyProperties.KEY_ALGORITHM_AES + "/"
+                            + KeyProperties.BLOCK_MODE_CBC + "/"
+                            + KeyProperties.ENCRYPTION_PADDING_PKCS7);
+        } catch (NoSuchAlgorithmException |
+                NoSuchPaddingException e) {
             throw new RuntimeException("Failed to get Cipher", e);
         }
-
 
         try {
             keyStore.load(null);
@@ -150,8 +161,16 @@ public class FingerprintActivity extends AppCompatActivity {
             return true;
         } catch (KeyPermanentlyInvalidatedException e) {
             return false;
-        } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
+        } catch (KeyStoreException | CertificateException
+                | UnrecoverableKeyException | IOException
+                | NoSuchAlgorithmException | InvalidKeyException e) {
             throw new RuntimeException("Failed to init Cipher", e);
         }
     }
+
+    public void goToMain(View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }

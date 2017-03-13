@@ -27,5 +27,9 @@
 
     <string name="LOGINKEY">77458</string>
     <string name="NUMBERKEY">55874</string>
+    <string name="enter_a_username">Enter a username</string>
+    <string name="emptyString"></string>
+    <string name="create">Create</string>
+
 
 </resources>

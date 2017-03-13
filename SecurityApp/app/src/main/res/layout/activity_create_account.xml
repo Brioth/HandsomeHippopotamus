@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_account"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="fill"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.pxl.opdrachten.securityapp.activities.CreateAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1.5">
+
+        <TextView
+            android:id="@+id/usernameLabel"
+            android:text="Username: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/usernameTextbox"
+            android:text=""
+            android:hint="Enter a username"
+            android:inputType="textPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/createAccountButton"
+        android:text="Create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="createAccount"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/usernameConfirmedLabel"
+            android:text="Username: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/usernameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/passwordLabel"
+            android:text="Password: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/passwordView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/pincodeLabel"
+            android:text="Pincode: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/pincodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/safeKeepingMessage"
+        android:text="Please save these credidentials somewhere safe, you won't be able to view them later"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="invisible"
+        />
+
+    <Button
+        android:id="@+id/continueWithLoginButton"
+        android:text="Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="Continue"
+        />
+
+
+</LinearLayout>
